@@ -110,7 +110,7 @@ func newMessage2(c Config) FullMessage {
 									Weight: "Bolder",
 									Style: "heading",
 									Size: "Large",
-									IsSubtle: true
+									IsSubtle: true,
 					}},
 				},
 		}},
