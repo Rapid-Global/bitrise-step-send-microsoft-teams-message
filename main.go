@@ -101,6 +101,9 @@ func newMessage2(c Config) FullMessage {
 				ContentType: "application/vnd.microsoft.card.adaptive",
 				Content: AttachmentContent{
 					Type: "AdaptiveCard",
+					MSTeams: Size{
+						Width: "Full",
+					},
 					Schema: "http://adaptivecards.io/schemas/adaptive-card.json",
 					Version: "1.2",
 					Body: []AttachmentBody{{

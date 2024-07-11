@@ -39,8 +39,13 @@ type Attachment struct {
 	Content AttachmentContent	`json:"content"`
 }
 
+type Size struct {
+	Width string `json:"width"`
+}
+
 type AttachmentContent struct {
 	Type	string					`json:"type"`
+	MSTeams Size					`json:"msteams"`
 	Schema string					`json:"$schema"`
 	Version string				`json:"version"`
 	Body []AttachmentBody	`json:"body"`
