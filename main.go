@@ -105,7 +105,7 @@ func newMessage2(c Config) FullMessage {
 					Version: "1.2",
 					Body: []AttachmentBody{{
 									Type: "TextBlock",
-									Text: "some title test",
+									Text: selectValue(c.Title, c.TitleOnError),
 									Color: "Attention",
 									Weight: "Bolder",
 									Style: "heading",
@@ -113,6 +113,23 @@ func newMessage2(c Config) FullMessage {
 									IsSubtle: true,
 					}},
 				},
+		},
+		{
+			ContentType: "application/vnd.microsoft.card.adaptive",
+			Content: AttachmentContent{
+				Type: "AdaptiveCard",
+				Schema: "http://adaptivecards.io/schemas/adaptive-card.json",
+				Version: "1.2",
+				Body: []AttachmentBody{{
+								Type: "TextBlock",
+								Text: ensureNewlines(c.Subject),
+								Color: "Attention",
+								Weight: "Bolder",
+								Style: "heading",
+								Size: "Large",
+								IsSubtle: true,
+				}},
+			},
 		}},
 	}
 	return msg

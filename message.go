@@ -40,19 +40,19 @@ type Attachment struct {
 }
 
 type AttachmentContent struct {
-	Type	string	`json:"type"`
-	Schema string	`json:"$schema"`
-	Version string	`json:"version"`
+	Type	string					`json:"type"`
+	Schema string					`json:"$schema"`
+	Version string				`json:"version"`
 	Body []AttachmentBody	`json:"body"`
 }
 
 type AttachmentBody struct {
-	Type	string	`json:"type"`
-	Text	string	`json:"text"`
-	Color	string	`json:"color"`
+	Type	string		`json:"type"`
+	Text	string		`json:"text"`
+	Color	string		`json:"color"`
 	Weight	string	`json:"weight"`
-	Style	string	`json:"style"`
-	Size	string	`json:"size"`
+	Style	string		`json:"style"`
+	Size	string		`json:"size"`
 	IsSubtle	bool	`json:"isSubtle"`
 }
 
