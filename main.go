@@ -118,7 +118,7 @@ func newMessage2(c Config) FullMessage {
 					{
 						Type: "TextBlock",
 						Text: ensureNewlines(c.Subject),
-						Color: "Attention",
+						Color: "Good",
 						Weight: "bold",
 						Style: "body",
 						Size: "medium",
