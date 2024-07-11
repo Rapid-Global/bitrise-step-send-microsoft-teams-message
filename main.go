@@ -94,8 +94,32 @@ func newMessage(c Config) Message {
 	return msg
 }
 
+func newMessage2(c Config) FullMessage {
+	msg := FullMessage{
+		Type: "message",
+    Attachments: []Attachment{{
+				ContentType: "application/vnd.microsoft.card.adaptive",
+				Content: AttachmentContent{
+					Type: "AdaptiveCard",
+					Schema: "http://adaptivecards.io/schemas/adaptive-card.json",
+					Version: "1.2",
+					Body: []AttachmentBody{{
+									Type: "TextBlock",
+									Text: "some title test",
+									Color: "Attention",
+									Weight: "Bolder",
+									Style: "heading",
+									Size: "Large",
+									IsSubtle: true
+					}}
+				}
+		}}
+	}
+	return msg
+}
+
 // postMessage sends a message.
-func postMessage(conf Config, msg Message) error {
+func postMessage(conf Config, msg FullMessage) error {
 	b, err := json.Marshal(msg)
 	if err != nil {
 		return err
@@ -137,9 +161,15 @@ func main() {
 	stepconf.Print(conf)
 	log.SetEnableDebugLog(conf.Debug)
 
-	msg := newMessage(conf)
+	msg := newMessage2(conf)
 
 	b, err2 := json.Marshal(msg)
+
+	if err2 != nil {
+		log.Errorf("Error: %s", err2)
+	} else {
+		log.Debugf("Prepared Json Data: %s\n", b)
+	}
 
 	if err := postMessage(conf, msg); err != nil {
 		log.Errorf("Message: %s, Error: %s", b, err)
