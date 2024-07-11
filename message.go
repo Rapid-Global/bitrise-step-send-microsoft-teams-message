@@ -54,10 +54,10 @@ type AttachmentContent struct {
 type AttachmentBody struct {
 	Type	string		`json:"type"`
 	Text	string		`json:"text"`
-	Color	string		`json:"color"`
-	Weight	string	`json:"weight"`
-	Style	string		`json:"style"`
-	Size	string		`json:"size"`
+	Color	string		`json:"color,omitempty"`
+	Weight	string	`json:"weight,omitempty"`
+	Style	string		`json:"style,omitempty"`
+	Size	string		`json:"size,omitempty"`
 	IsSubtle	bool	`json:"isSubtle"`
 }
 
