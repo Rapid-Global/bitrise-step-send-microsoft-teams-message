@@ -139,7 +139,7 @@ func main() {
 
 	msg := newMessage(conf)
 	if err := postMessage(conf, msg); err != nil {
-		log.Errorf("Error: %s", err)
+		log.Errorf("Message: %s, Error: %s", msg, err)
 		os.Exit(1)
 	}
 
