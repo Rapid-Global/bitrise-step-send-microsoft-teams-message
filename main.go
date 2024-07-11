@@ -111,9 +111,9 @@ func newMessage2(c Config) FullMessage {
 									Style: "heading",
 									Size: "Large",
 									IsSubtle: true
-					}}
-				}
-		}}
+					}},
+				},
+		}},
 	}
 	return msg
 }
