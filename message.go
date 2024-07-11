@@ -30,30 +30,30 @@ import (
 )
 
 type FullMessage struct {
-	Type	string							`json:type`
-	Attachments	[]Attachment	`json:attachments`
+	Type	string							`json:"type"`
+	Attachments	[]Attachment	`json:"attachments"`
 }
 
 type Attachment struct {
-	ContentType string				`json:contentType`
-	Content AttachmentContent	`json:content`
+	ContentType string				`json:"contentType"`
+	Content AttachmentContent	`json:"content"`
 }
 
 type AttachmentContent struct {
-	Type	string	`json:type`
-	Schema string	`json:$schema`
-	Version string	`json:version`
-	Body []AttachmentBody	`json:body`
+	Type	string	`json:"type"`
+	Schema string	`json:"$schema"`
+	Version string	`json:"version"`
+	Body []AttachmentBody	`json:"body"`
 }
 
 type AttachmentBody struct {
-	Type	string	`json:type`
-	Text	string	`json:text`
-	Color	string	`json:color`
-	Weight	string	`json:weight`
-	Style	string	`json:style`
-	Size	string	`json:size`
-	IsSubtle	bool	`json:isSubtle`
+	Type	string	`json:"type"`
+	Text	string	`json:"text"`
+	Color	string	`json:"color"`
+	Weight	string	`json:"weight"`
+	Style	string	`json:"style"`
+	Size	string	`json:"size"`
+	IsSubtle	bool	`json:"isSubtle"`
 }
 
 // See also: https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#actions
