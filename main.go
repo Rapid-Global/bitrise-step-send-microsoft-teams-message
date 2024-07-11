@@ -138,8 +138,11 @@ func main() {
 	log.SetEnableDebugLog(conf.Debug)
 
 	msg := newMessage(conf)
+
+	b, err2 := json.Marshal(msg)
+
 	if err := postMessage(conf, msg); err != nil {
-		log.Errorf("Message: %s, Error: %s", msg, err)
+		log.Errorf("Message: %s, Error: %s", b, err)
 		os.Exit(1)
 	}
 
