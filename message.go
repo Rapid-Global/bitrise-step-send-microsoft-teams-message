@@ -55,7 +55,7 @@ type AttachmentContent struct {
 type AttachementAction struct {
 	Type	string	`json:"type"`
 	Title	string	`json:"title"`
-	URI	string		`json:"uri"`
+	URL	string		`json:"url"`
 }
 
 type AttachmentBody struct {
@@ -126,7 +126,7 @@ func parsesActions2(s string) (as []AttachementAction) {
 		as = append(as, AttachementAction{
 			Type: "Action.OpenUrl",
 			Title: p[0],
-			URI: p[1],
+			URL: p[1],
 		})
 	}
 	return
