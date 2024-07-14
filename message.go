@@ -49,6 +49,13 @@ type AttachmentContent struct {
 	Schema string					`json:"$schema"`
 	Version string				`json:"version"`
 	Body []AttachmentBody	`json:"body"`
+	Actions []AttachementAction	`json:"actions"`
+}
+
+type AttachementAction struct {
+	Type	string	`json:"type"`
+	Title	string	`json:"title"`
+	URI	string		`json:"uri"`
 }
 
 type AttachmentBody struct {
@@ -112,6 +119,17 @@ type Action struct {
 type Target struct {
 	OS  string `json:"os"`
 	URI string `json:"uri"`
+}
+
+func parsesActions2(s string) (as []AttachementAction) {
+	for _, p := range pairs(s) {
+		as = append(as, AttachementAction{
+			Type: "Action.OpenUrl",
+			Title: p[0],
+			URI: p[1],
+		})
+	}
+	return
 }
 
 func parsesActions(s string) (as []Action) {

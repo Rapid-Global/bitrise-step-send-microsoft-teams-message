@@ -133,6 +133,7 @@ func newMessage2(c Config) FullMessage {
 							Size: "Default",
 							IsSubtle: true,
 						}},
+					Actions: parsesActions2(selectValue(c.Buttons, c.ButtonsOnError)),
 				},
 		}},
 	}
