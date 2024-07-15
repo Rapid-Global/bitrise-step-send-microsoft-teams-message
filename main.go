@@ -107,7 +107,7 @@ func defaultAttachmentBody(s string) AttachmentBody {
 }
 
 func newMessage2(c Config) FullMessage {
-	Body = []AttachmentBody{{
+	var body []AttachmentBody = []AttachmentBody{{
 			Type: "TextBlock",
 			Text: selectValue(c.Title, c.TitleOnError),
 			Color: "Good",
@@ -121,7 +121,7 @@ func newMessage2(c Config) FullMessage {
 	}
 
 	for _, p := range pairs(c.Fields) {
-		Body = append(Body, p[0] + " - " + p[1])
+		body = append(body, p[0] + " - " + p[1])
 	}
 
 	msg := FullMessage{
@@ -135,7 +135,7 @@ func newMessage2(c Config) FullMessage {
 					},
 					Schema: "http://adaptivecards.io/schemas/adaptive-card.json",
 					Version: "1.2",
-					Body: Body,
+					Body: body,
 					Actions: parsesActions2(selectValue(c.Buttons, c.ButtonsOnError)),
 				},
 		}},
