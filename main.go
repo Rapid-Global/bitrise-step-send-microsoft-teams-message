@@ -94,7 +94,36 @@ func newMessage(c Config) Message {
 	return msg
 }
 
+func defaultAttachmentBody(s string) AttachmentBody {
+	return AttachmentBody{
+		Type: "TextBlock",
+		Text: s,
+		Color: "Default",
+		Weight: "Default",
+		Style: "default",
+		Size: "Default",
+		IsSubtle: true,
+	}
+}
+
 func newMessage2(c Config) FullMessage {
+	Body = []AttachmentBody{{
+			Type: "TextBlock",
+			Text: selectValue(c.Title, c.TitleOnError),
+			Color: "Good",
+			Weight: "Bolder",
+			Style: "heading",
+			Size: "Large",
+			IsSubtle: false,
+		},
+		defaultAttachmentBody(c.AuthorName),
+		defaultAttachmentBody(ensureNewlines(c.Subject)),
+	}
+
+	for _, p := range pairs(c.Fields) {
+		Body = append(Body, p[0] + " - " + p[1])
+	}
+
 	msg := FullMessage{
 		Type: "message",
     Attachments: []Attachment{{
@@ -106,33 +135,7 @@ func newMessage2(c Config) FullMessage {
 					},
 					Schema: "http://adaptivecards.io/schemas/adaptive-card.json",
 					Version: "1.2",
-					Body: []AttachmentBody{{
-							Type: "TextBlock",
-							Text: selectValue(c.Title, c.TitleOnError),
-							Color: "Good",
-							Weight: "Bolder",
-							Style: "heading",
-							Size: "Large",
-							IsSubtle: false,
-						},
-						{
-							Type: "TextBlock",
-							Text: c.AuthorName,
-							Color: "Default",
-							Weight: "Default",
-							Style: "default",
-							Size: "Default",
-							IsSubtle: true,
-						},
-						{
-							Type: "TextBlock",
-							Text: ensureNewlines(c.Subject),
-							Color: "Default",
-							Weight: "Default",
-							Style: "default",
-							Size: "Default",
-							IsSubtle: true,
-						}},
+					Body: Body,
 					Actions: parsesActions2(selectValue(c.Buttons, c.ButtonsOnError)),
 				},
 		}},
