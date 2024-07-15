@@ -121,7 +121,8 @@ func newMessage2(c Config) FullMessage {
 	}
 
 	for _, p := range pairs(c.Fields) {
-		body = append(body, p[0] + " - " + p[1])
+		var s string = p[0] + " - " + p[1]
+		body = append(body, s)
 	}
 
 	msg := FullMessage{
